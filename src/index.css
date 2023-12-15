@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("image/snow.png");
+    background-image: url("src/assets/image/snow.png");
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
