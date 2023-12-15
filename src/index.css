@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("src/assets/image/snow.png");
+    background: linear-gradient(to bottom, rgba(11, 38, 175, 0.7), rgb(19, 154, 216));
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
