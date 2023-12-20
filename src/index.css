@@ -1,58 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad:wght@400;700&family=Montserrat:ital,wght@0,100;0,500;1,100;1,200;1,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+.background-day{
+    background: linear-gradient(to bottom, #2F2CBC, #4BB5F1);
+}
+
+.background-night{
+    background: linear-gradient(to bottom, #06050E, #223076);
+}
+
 body{
-    background: linear-gradient(to bottom, rgba(11, 38, 175, 0.7), rgb(19, 154, 216));
     object-fit: cover;
+    font-family: 'Afacad', sans-serif;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     position: relative;
-    display: flex;
-    justify-content: center;
-    
-    align-items: center;
     background-position: center;
     object-fit: cover;
 }
 
-.contain{
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    width: 80vw;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    height: 80vh;
-}
-
-
-
 .search{
-    outline: none;
-    transition: width 0.5s ease-in-out;
-    border: none;
-    padding-left: 12%;
-    color: transparent;
-    position: absolute;
     background: transparent;
-    top: 10px;
-    right: 10px;
-    width: 40px;
-    height: 4vh;
-    
+    position: absolute;
+    right: 2%;
+    width: 5%;
+    transition: width 0.4s ease-in-out;
 }
 
 
-.search:focus{
-    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    color: white;
-    width: 50vw;
+.searchFocus{
+    width: 10rem;
+    outline: none;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    border-radius: 0.5rem;
+}
+
+.contain{
+    margin: 2rem;
+    height: 90vh;
+    width: 80%;
 }
