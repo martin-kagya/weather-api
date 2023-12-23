@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Details from "./Details.jsx"
 import "./index.css"
 
 function App()
@@ -6,6 +7,7 @@ function App()
   const [icon, setIcon] = useState(null)
   const [temperature, setTemperature] = useState(null)
   const [description, setDescription] = useState(null)
+  const [Data, setData] = useState(null)
   const [humidity, setHumidity] = useState(null)
   const [isSearchActive, setIsSearchActive] = useState(false)
   const [city, setCity] = useState(null)
@@ -15,6 +17,7 @@ function App()
   
   async function getData (e, city)
     {
+      searchbar.blur()
       window.localStorage.setItem("location", location)
       if(e){
         e.preventDefault()
@@ -23,6 +26,7 @@ function App()
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=502edef82faa368dd2b7d1f1449672de`)
         const data = await response.json()
         const details = data.main
+        setData(data)
         setTemperature(details.temp - 273.15)
         setDescription(data.weather[0].description)
         setHumidity(details.humidity)
@@ -104,45 +108,50 @@ function setBackground(time)
 }
 const searchbar = document.querySelector(".search");
 
-if (isSearchActive)
-{
-  searchbar.classList.add("searchFocus");
-  
+if (isSearchActive) {
+  searchbar.classList.add("searchFocus"); 
 }
 
 
   return(
     <>
-    <div className="contain absolute text-white">
+    <div className="container top-4  app absolute text-white md:text-4xl text-2xl lg:text-4xl">
       <form onSubmit={(e) => {getData(e, city); setIsSearchActive(false)}} className="flex justify-center form" name="get-data">
-        <div className="search-icon">
-          <img height="10px" width="20px" src="https://img.icons8.com/color/48/search--v1.png" className="absolute m-1 right-1">
+        <div className="search-icon text-2xl">
+          <img height="10px" width="20px" src="https://img.icons8.com/color/48/search--v1.png" className="absolute m-1 top-4 searchIcon right-1">
           </img>
         </div>
-          <input type="text" className="search flex justify-center items-center absolute rounded-lg" required
+          <input type="text" className="search top-4 flex justify-center items-center absolute text-2xl rounded-lg" required
           placeholder={isSearchActive ? "Enter City" : ""}
           onFocus={() => setIsSearchActive(true)}
           onChange={e => {setCity(e.target.value); setLocation(e.target.value)}}>
           </input>
       </form>
       {!temperature && (
-      <div className="flex justify-center items-center h-48">
-        <h2 className="text-2xl">Click the icon above to enter a city</h2>
+      <div className="flex justify-center items-center mt-6 h-48">
+        <h2 className="italic">Click the icon above to enter a city</h2>
+
       </div>
       )}
       {
         temperature && (
-          <div className="flex flex-col items-center justify-center pt-8">
-            <h1 className="text-4xl font-bold p-6 calistoga">{city}</h1>
-            <p>{description}</p>
-            <img src={icon} alt="icon" className="w-24 h-24"/>
-            <h1 className="text-7xl">{Math.round(temperature)}°</h1>
-            <h1 className="text-2xl font-bold">Humidity: {humidity}</h1>
-            <p>{date}</p>
-          </div>
+          <>
+            <div className="flex flex-col items-center justify-center mt-32">
+              <h1 className="text-4xl font-bold p-6 calistoga">{city}</h1>
+              <p>{description}</p>
+              <img src={icon} alt="icon" className="w-24 h-24"/>
+              <h1 className="text-7xl">{Math.round(temperature)}°</h1>
+            </div>
+            <Details
+              data = {Data}
+              date={date}
+              humidity={humidity}
+            />
+          </>
         )
       }
       </div>
+      <footer className="italic text-xs">Made by Martin</footer>
     </>
   )
 

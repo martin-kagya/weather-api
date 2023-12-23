@@ -48,8 +48,45 @@ body{
     border-radius: 0.5rem;
 }
 
-.contain{
-    margin: 2rem;
-    height: 90vh;
-    width: 80%;
+.searchFocus::placeholder{
+    color: #fff;
+}
+@media screen and (min-width: 500px) {
+    .searchIcon{
+        position: absolute;
+        right: 1.5rem;
+    }
+    .card{
+        position: relative;
+        transform: translateY(50%);
+        transform: translateX(50%);
+        margin-top: 4rem;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+        width: 50%;
+        backdrop-filter: blur(50%);
+        border-radius: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    .card{
+        position: relative;
+        transform: translateY(40%);
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+        width: 100%;
+        backdrop-filter: blur(50%);
+        border-radius: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+    } 
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
 }
